@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{072b396f-5292-4d9c-a23b-41fbbe4753d2}</ProjectGuid>
-    <RootNamespace>HomeWork</RootNamespace>
+    <ProjectGuid>{b0ef7bd2-3e3e-4eb7-b9d5-5937804b0c1b}</ProjectGuid>
+    <RootNamespace>My001NumberCount</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="000_StringCount.cpp" />
+    <ClCompile Include="001_NumberCount.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
