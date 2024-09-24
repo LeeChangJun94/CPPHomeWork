@@ -25,31 +25,72 @@ int NumberCount(long long _Value)
 // 내 기준으로 지금
 // _Value 를 넣어주면 Buffer에 
 // 숫자를 문자열로 만드는 함수.
-void NumberToString(char* Buffer, int BufferSize, int _Value)
+void NumberToString1(char* Buffer, int BufferSize, int _Value)
 {
     int ValueSize = NumberCount(_Value);
     int Value = _Value;
-
-    while (Value)
+    if (BufferSize > ValueSize)
     {
-        Buffer[ValueSize - 1] = Value % 10 + '0';
-        Value /= 10;
-        ValueSize -= 1;
+        while (Value)
+        {
+            Buffer[ValueSize - 1] = Value % 10 + '0';
+            Value /= 10;
+            ValueSize -= 1;
+        }
+    }
+    else
+    {
+        std::cout << "Error";
     }
 
     return;
 }
 
+void NumberToString2(char* Buffer, int BufferSize, int _Value)
+{
+    int Index = 0;
+    int Num = 0;
+    int NumberCountValue = NumberCount(_Value);
+
+    int MulValue = 1;
+
+    for (int i = 0; i < NumberCountValue - 1; i++)
+    {
+        MulValue *= 10;
+    }
+
+    while (true)
+    {
+        Num = _Value / MulValue;
+        
+        Buffer[Index] = Num + '0';
+        
+        _Value = _Value - Num * MulValue;
+
+        MulValue /= 10;
+
+        Index += 1;
+
+        if (Index == NumberCountValue)
+        {
+            break;
+        }
+    }
+    return;
+}
+
 int main()
 {
-    // 5
     int Result = NumberCount(5258546979132134111);
  
-    char Buffer[100] = { 0 };
+    char Buffer1[3] = { 0 };
+    char Buffer2[100] = { 0 };
 
-    NumberToString(Buffer, 100, 3712);
+    NumberToString1(Buffer1, 3, 3712);
+    NumberToString2(Buffer2, 100, 3712);
 
-    std::cout << Buffer;
+    std::cout << Buffer1 << "\n";
+    std::cout << Buffer2;
     // Buffer == "3712"
 
 }
