@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <conio.h>
 
 const int LINECOUNT = 50;
 
@@ -59,13 +60,12 @@ void CreateMonster(const char* const _Ptr, int _Att, int _Hp)
 void StatusRender(const char* _Name, int _Att, int _HP)
 {
     printf_s("%s Status", _Name);
-    
-    for (int i = 0; i < LINECOUNT - strlen(_Name) - 7; i += 1)
+    int nameLineCount = LINECOUNT - strlen(_Name) - strlen(" Status");
+    for (int i = 0; i < nameLineCount; i += 1)
     {
         printf_s("-");
     }
     printf_s("\n");
-
     printf_s("공격력 : %d\n", _Att);
     printf_s("체력 : %d\n", _HP);
 
@@ -83,9 +83,27 @@ void PlayerStatusRender()
     StatusRender(PlayerName, PlayerAtt, PlayerHp);
 }
 
+// 편의를 위해서 랩핑했다고 한다.
 void MonsterStatusRender()
 {
     StatusRender(MonsterName, MonsterAtt, MonsterHp);
+}
+
+// 클래스의 필요성
+// 함수는 다양한 상황에서 쓸수있게 만들수록 좋다.
+// 함수는 작은 기능을 많이 만들고 
+// 함수는 한번에 1가지 일을 할수록 좋다.
+// 로직과 랜더를 분리해야 한다.
+void DamageRender(const char* const _AttName, const char* const _DefName, int _Att)
+{
+    // 랜더링
+    printf_s("%s 가 %s를 공격해서 %d의 데미지를 입혔습니다.\n", _AttName, _DefName, _Att);
+}
+
+void DamageLogic(int& _DefHp, int _Att)
+{
+    // 게임 로직
+    _DefHp -= _Att;
 }
 
 int main()
@@ -94,14 +112,39 @@ int main()
     /*char Test1[50] = Test0;
     Test1 = Test0*/;
 
-    CreatePlayer("Player", 10, 100);
+    CreatePlayer("1", 10, 100);
     CreateMonster("Orc", 10, 50);
 
-    PlayerStatusRender();
-    MonsterStatusRender();
+    while (true)
+    {
+        // 화면 전체를 지워라.
+        // 콘솔창에 다른 프로그램를 실행해주는 프로그램
+        system("cls");
 
-    // printf_s("싸운다");
-    // 나는 이걸 플레이어라고 생각할 겁니다.
+        char Input = ' ';
 
+        PlayerStatusRender();
+        MonsterStatusRender();
+        Input = _getch();
+
+        DamageLogic(MonsterHp, PlayerAtt);
+
+        system("cls");
+        PlayerStatusRender();
+        MonsterStatusRender();
+        DamageRender(PlayerName, MonsterName, PlayerAtt);
+
+        Input = _getch();
+
+        DamageLogic(PlayerHp, MonsterAtt);
+        system("cls");
+        PlayerStatusRender();
+        MonsterStatusRender();
+
+        DamageRender(PlayerName, MonsterName, PlayerAtt);
+        DamageRender(MonsterName, PlayerName, MonsterAtt);
+
+        Input = _getch();
+    }
 
 }
