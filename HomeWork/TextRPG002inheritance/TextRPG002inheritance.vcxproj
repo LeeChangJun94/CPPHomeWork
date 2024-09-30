@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d30ddc5a-511a-4dc0-9663-11dfa459d3e7}</ProjectGuid>
-    <RootNamespace>TextRpg000</RootNamespace>
+    <ProjectGuid>{77820b3f-eb3f-45ad-bda0-519405357cc8}</ProjectGuid>
+    <RootNamespace>TextRPG002inheritance</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="TextRpg000.cpp" />
+    <ClCompile Include="TextRPG002inheritance.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

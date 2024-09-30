@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{EF158258-8
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRpg000", "TextRpg000\TextRpg000.vcxproj", "{39F7404E-78B8-4874-A9FE-CCAB43C7C7A9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRPG002inheritance", "TextRPG002inheritance\TextRPG002inheritance.vcxproj", "{F679AEEA-4273-4168-8A81-D9D395EF3A03}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextRPG003ClassFile", "TextRPG003ClassFile\TextRPG003ClassFile.vcxproj", "{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -63,12 +67,30 @@ Global
 		{39F7404E-78B8-4874-A9FE-CCAB43C7C7A9}.Release|x64.Build.0 = Release|x64
 		{39F7404E-78B8-4874-A9FE-CCAB43C7C7A9}.Release|x86.ActiveCfg = Release|Win32
 		{39F7404E-78B8-4874-A9FE-CCAB43C7C7A9}.Release|x86.Build.0 = Release|Win32
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Debug|x64.ActiveCfg = Debug|x64
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Debug|x64.Build.0 = Debug|x64
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Debug|x86.ActiveCfg = Debug|Win32
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Debug|x86.Build.0 = Debug|Win32
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Release|x64.ActiveCfg = Release|x64
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Release|x64.Build.0 = Release|x64
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Release|x86.ActiveCfg = Release|Win32
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03}.Release|x86.Build.0 = Release|Win32
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Debug|x64.ActiveCfg = Debug|x64
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Debug|x64.Build.0 = Debug|x64
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Debug|x86.ActiveCfg = Debug|Win32
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Debug|x86.Build.0 = Debug|Win32
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Release|x64.ActiveCfg = Release|x64
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Release|x64.Build.0 = Release|x64
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Release|x86.ActiveCfg = Release|Win32
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{39F7404E-78B8-4874-A9FE-CCAB43C7C7A9} = {EF158258-8ED4-4123-AC97-A21DD05EDD3F}
+		{F679AEEA-4273-4168-8A81-D9D395EF3A03} = {EF158258-8ED4-4123-AC97-A21DD05EDD3F}
+		{ADAC5A93-943B-4584-B3F9-66AD5DC26F57} = {EF158258-8ED4-4123-AC97-A21DD05EDD3F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D19DB5F-FF79-4C15-AA5A-46359C40BCA6}
