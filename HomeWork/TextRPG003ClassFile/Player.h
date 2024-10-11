@@ -25,7 +25,7 @@
 // class Item; <= 이건 좋기는 좋은데.
 class Item;
 
-class UPlayer : public UFightUnit
+class APlayer : public UFightUnit
 {
 	// 내부에서 다른 클래스를 값형으로 사용했을때 헤더를 넣지 않을수 없다.
 	// Has a 인데 값형으로 Has a 했을때
@@ -46,7 +46,9 @@ class UPlayer : public UFightUnit
 	// 한번 해주면 그다음부터는 할필요도 없는데.
 
 public:
-	UPlayer();
+	APlayer();
+
+	void StatusTextPrint() override;
 
 	// 나쁜게 아닌데 절제 없이 하다보면 순환참조 및 문제가 생긴다.
 	// 헤더에다가 구현하다보면 
@@ -59,13 +61,33 @@ public:
 	//	// 그 클래스의 함수를 사용하면 헤더가 있어야 한다.
 	//	// Weapon->Test();
 	//}
+
+	void SetCurZone(int _Index)
+	{
+		CurZoneIndex = _Index;
+	}
+
+	int GetCurZone() const
+	{
+		return CurZoneIndex;
+	}
+
+	inline int GetEquipAtt() const 
+	{
+		return EquipAtt;
+	}
+
+	inline void SetEquipAtt(int _Value)
+	{
+		EquipAtt = _Value;
+	}
+
 protected:
 
 private:
 // #include "Item.h" <= 절대 좋은거 아니다.
 	class Item* Weapon = nullptr;
-
-
-
+	int CurZoneIndex = 0;
+	int EquipAtt = 0;
 };
 

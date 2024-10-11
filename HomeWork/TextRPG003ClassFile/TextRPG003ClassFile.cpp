@@ -4,7 +4,7 @@
 
 int main()
 {
-    UPlayer NewPlayer;
+    APlayer NewPlayer;
     UWorld World;
     World.InPlayer(NewPlayer);
 }
