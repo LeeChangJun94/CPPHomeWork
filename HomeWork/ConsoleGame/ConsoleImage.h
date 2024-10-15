@@ -58,7 +58,6 @@ public:
 		return Y;
 	}
 
-
 	void Copy(FIntPoint _Offset, ConsoleImage& _Image);
 
 	void SetPixel(FIntPoint _Pos, char _Char);

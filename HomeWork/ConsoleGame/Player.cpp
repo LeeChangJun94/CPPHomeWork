@@ -1,14 +1,45 @@
 #include "Player.h"
 #include <conio.h>
 #include "Enums.h"
+#include "GlobalValue.h"
+#include "ConsoleEngine.h"
+#include "Renderer.h"
+
+Player *Player::PlayerPtr = nullptr;
 
 void Player::BeginPlay()
 {
-	PlayerImage.Create({2, 2}, '@');
+	PlayerPtr = this;
+
+	Super::BeginPlay();
+
+	Renderer* Render = CreateDefaultSubObject();
+	Render->RenderImage.Create({ 1, 1 }, '@');
+
+	// 1. 적당히 아래 위치에 놓아달라.
+	SetActorLocation({ 10, 8 });
 }
 
 void Player::Tick()
 {
+	Super::Tick();
+	// ConsoleEngine::MainPlayer
+
+	// 타고가서 쓰게 할려는 방법.
+	// ConsoleEngine::GetEngine().GetPlayer()
+
+	// ConsoleImage& BackBuffer = *_BackBuffer;
+
+	// static은 전역이니까 객체가 필요없다.
+	ConsoleEngine::GetWindow();
+	ConsoleEngine::GetWindowSize();
+
+	// 남에 코드 안건드리고 
+	GlobalValue::WindowPtr;
+	GlobalValue::WindowSize;
+
+	
+
 	int Value = _kbhit();
 	Enums::GAMEDIR Dir = Enums::GAMEDIR::NONE;
 	if (Value != 0)
@@ -33,6 +64,25 @@ void Player::Tick()
 		case 's':
 			Dir = Enums::GAMEDIR::DOWN;
 			break;
+		case 'Z':
+		case 'z':
+		{
+			Bullet* NewBullet = ConsoleEngine::GetEngine().SpawnActor<Bullet>();
+
+			// 1. 총알이 플레이어 위치에 나오게 만드세요
+			// 2. 총알이 위쪽으로 올라가게 만드세요.
+			NewBullet->SetActorLocation(this->GetActorLocation());
+
+			// 관리하는자가 누구냐?
+			// 지금 엔진의 AllActorVector 에서 가지고 있다.
+			// 플레이어를 만든 컨텐츠 프로그래머가 BulletVector를 만들고 여기에도 넣어놨다.
+			// 
+			// 플레이어가 총알을 매니지먼트 
+			BulletVector.push_back(NewBullet);
+			// delete NewBullet;
+
+			break;
+		}
 		default:
 			break;
 		}
@@ -42,45 +92,21 @@ void Player::Tick()
 	switch (Dir)
 	{
 	case Enums::GAMEDIR::LEFT:
-		if (0 < Pos.X)
-		{
-			Pos += FIntPoint::LEFT;
-		}
+		AddActorLocation(FIntPoint::LEFT);
 		break;
 	case Enums::GAMEDIR::RIGHT:
-		if (BackBufferX - PlayerImage.GetImageSizeX() > Pos.X)
-		{
-			Pos += FIntPoint::RIGHT;
-		}
+		AddActorLocation(FIntPoint::RIGHT);
 		break;
 	case Enums::GAMEDIR::UP:
-		if (0 < Pos.Y)
-		{
-			Pos += FIntPoint::UP;
-		}
+		AddActorLocation(FIntPoint::UP);
 		break;
 	case Enums::GAMEDIR::DOWN:
-		if (BackBufferY - PlayerImage.GetImageSizeY() > Pos.Y)
-		{
-			Pos += FIntPoint::DOWN;
-		}
+		AddActorLocation(FIntPoint::DOWN);
 		break;
 	default:
 		break;
 	}
 
-	
+	// Pos += FIntPoint::RIGHT;
 }
 
-void Player::Render(ConsoleImage* _BackBuffer)
-{
-	// delete _BackBuffer;
-	_BackBuffer->Copy(Pos, PlayerImage);
-	BackBufferX = _BackBuffer->GetImageSizeX();
-	BackBufferY = _BackBuffer->GetImageSizeY();
-}
-
-void Player::SetActorLocation(FIntPoint _Pos)
-{
-	Pos = _Pos;
-}
