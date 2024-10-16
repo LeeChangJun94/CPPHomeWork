@@ -16,7 +16,11 @@ class UVector
 public:
 	~UVector()
 	{
-		delete[] Datas;
+		if (nullptr != Datas)
+		{
+			delete[] Datas;
+			Datas = nullptr;
+		}
 	}
 
 	void reserve(size_t _capacity)
